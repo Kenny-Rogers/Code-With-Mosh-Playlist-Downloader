@@ -34,7 +34,7 @@ def main():
     # Scrape url
     c = 0
     inp = f.readline()
-    while("END" not in inp):
+    while("END\n" not in inp):
         if(c%2 == 0):
             print(inp.split('\n')[0])
         else:
