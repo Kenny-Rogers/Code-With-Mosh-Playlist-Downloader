@@ -35,71 +35,32 @@
 - ##### Install Python (Python2, if not installed on the system by default, like Ubuntu 18.04)
 ```shell
    sudo apt update
-   sudo apt install python-pip
-   pip --version
+   sudo apt install python3
+   sudo apt install python3-pip
+   pip3 --version
 ```
 
-- ##### Install Beautiful Soup4 (python scraping module)
-```shell
-   sudo pip install beautifulsoup4 
-```
-- ##### Install lxml HTML parser
-```shell
-   sudo pip install lxml
-```
+#### Usage Steps
 
-#### Basic Steps
-
-1. Clone the Repository and open ./core
-2. Open the following files
-   - [scrape_list_via_login.py](https://github.com/garganshul108/Code-With-Mosh-Playlist-Downloader/blob/master/scrape_list_via_login.py)
-   - [scrape_via_login.py](https://github.com/garganshul108/Code-With-Mosh-Playlist-Downloader/blob/master/scrape_via_login.py)
-3. Change the login credentials
+1. Clone the Repository and open the project directory
+2. Install the packages required for the project
+```bash
+   $ pip3 install -r ./requirements.txt
+```
+3. Open ./core/config_detail.py  and add the following details
    - USERNAME (email)
    - PASSWORD
    - SCHOOL_ID (A numerical value found in your URL as you login)
-     ```shell
+     ```
      Sample URL: "https://sso.teachable.com/secure/121212/users/sign_in?clean_login=true&reset_purchase_session=1"
      Here the 121212 represents your SCHOOL_ID
       ```
-
-#### Download a specific Playlist (say NodeJS)
-
-4. Open Topic_list.url
-5. Copy the URL of the desired topic (here NodeJS) from [Topic_list.url](https://github.com/garganshul108/Code-With-Mosh-Playlist-Downloader/blob/master/Topic_list.url)
-6. Run
-
-```shell
-    chmod 777 ./playlist_downloader.sh
-    playlist_downloaded.sh <topic_url> <topic_name>
+   - TOPIC_URL : the url of the desired topic [Topic_list.url](https://github.com/garganshul108/Code-With-Mosh-Playlist-Downloader/blob/master/core/Topic_list.url)
+   - TOPIC_NAME : the name of the desired playlist
+4. Given the right details, start the script (./core/download.py)
+```bash
+   $ python3 download.py
 ```
-7. A new file named "<topic_name>.txt" will be generated
-8. Make a folder and copy the curl_script.sh and <topic_name>.txt to it
-9. Run
-```shell
-   chmod 777 ./curl_script.sh 
-   ./curl_script.sh <topic_name>.txt
-```
-10. This will start the download
-
-#### Download All Playlists Available
-
-4. Run
-
-```shell
-    chmod 777 ./full_playlist_downloader.sh
-    ./full_playlist_downloader.sh Topic_list.url
-```
-5. New files named "<topic_name>.txt" will be generated.
-   These files will have the content urls for download.
-   
-6. For each file, that you want the playlist to download, make a folder and copy the curl_script.sh and <topic_name>.txt to it
-7. Run
-```shell
-   chmod 777 ./curl_script.sh 
-   ./curl_script.sh <topic_name>.txt
-```
-8. This will start the download
 
 ##### NOTE: The ReactJS playlist consumes upto 17 GB of your total data
 
